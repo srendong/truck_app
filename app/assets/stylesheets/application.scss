@@ -1,3 +1,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
+/*Custom css*/
+@import "app";
+@import "default";
+
+/*CSS from vendor*/
+@import "jquery-ui/jquery-ui.min.css";
+@import "listtyicons/style.css";
+@import "bootstrapthumbnail/bootstrap-thumbnail.css";
+@import "datepicker/datepicker.min.css";
+@import "selectbox/select_option1.css";
+@import "owl-carousel/owl.carousel.min.css";
+@import "fancybox/jquery.fancybox.min.css";
+@import "isotope/isotope.min.css";
+@import "map/css/map.css";
+@import "rateyo/jquery.rateyo.min.css";
+@import "animate/animate.css";
