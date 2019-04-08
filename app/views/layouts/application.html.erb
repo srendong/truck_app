@@ -19,6 +19,24 @@
   </head>
 
   <body id="body" class="body-wrapper boxed-menu">
-    <%= yield %>
+    <div class="main-wrapper">
+      <!-- HEADER -->
+        <header id="pageTop" class="header">
+
+          <!-- TOP INFO BAR -->
+
+          <div class="nav-wrapper navbarWhite">
+            <!-- NAVBAR -->
+
+            <%= render 'layouts/navbar' %>
+
+          </div>
+        </header>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+
+        <!-- no tengo contenido aun en home/index -->
+        <%= yield %>
+    </div>  
   </body>
 </html>
