@@ -36,7 +36,8 @@
 
               <div class="form-group">
                 <!-- submit -->
-                <%= f.submit "Sign up", class: "btn btn-primary pull-left" %>
+                <%= f.button "Sign up", class: "btn btn-primary pull-left", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Registering..." } %>
+
               </div>
             <% end %>
           </div>

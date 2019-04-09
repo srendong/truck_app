@@ -19,15 +19,15 @@
                 <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "userPassword" %>
                 <p class="help-block">Enter the password that accompanies your username.</p>
               </div>
-              <!-- remember_me -->
-              <% if devise_mapping.rememberable? %>
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              <% end %>
+              <br>
               <div class="form-group">
                 <!-- submit -->
-                <%= f.submit "Log in", class: "btn btn-primary pull-left" %>
-                <a href="#" class="pull-right link">Fogot Password?</a>
+                <%= f.button "Log in", class: "btn btn-primary pull-left", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Sending..." } %>
+
+
+                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                  <%= link_to "Forgot your password?", new_password_path(resource_name), class: "pull-right link" %><br />
+                <% end %>
               </div>
             <% end %>
           </div>
