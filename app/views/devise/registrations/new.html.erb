@@ -1,29 +1,56 @@
-<h2>Sign up</h2>
+<!-- REGISTRATION SECTION -->
+<section class="clearfix loginSection">
+  <div class="container">
+    <div class="row">
+      <div class="center-block col-md-5 col-sm-6 col-xs-12">
+        <div class="panel panel-default loginPanel">
+          <div class="panel-heading text-center">Sign Up</div>
+          <div class="panel-body">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "loginForm") do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="form-group">
+                <label for="userEmail">User Email *</label>
+                <!-- email field -->
+                <%= f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "userEmail" %>
+                <p class="help-block">Enter the email that you will use to log in on platform.</p>
+              </div>
+              <div class="form-group">
+                <label for="userPassword">Password *</label>
+                <!-- password field -->
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "userPassword" %>
+                <p class="help-block">Enter the password that accompanies your username.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="userPassword">Password Confirmation *</label>
+                <!-- password field -->
+
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "userPassword" %>
+                <p class="help-block">Enter the password that accompanies your username.</p>
+              </div>
+
+              <div class="form-group">
+                <!-- submit -->
+                <%= f.submit "Sign up", class: "btn btn-primary pull-left" %>
+              </div>
+            <% end %>
+          </div>
+          <div class="panel-footer text-center">
+
+            <%- if controller_name != 'sessions' %>
+              <p>Are you a member? 
+              <%= link_to "Log in", new_session_path(resource_name), class: "link" %><br />
+              </p>
+            <% end %>
+            
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
