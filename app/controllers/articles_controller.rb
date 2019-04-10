@@ -1,5 +1,10 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :is_admin?, except: [:index, :show]
+
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+
+
 
   # GET /articles
   # GET /articles.json
@@ -25,6 +30,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save
@@ -69,6 +75,13 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, :user_id)
+    end
+
+    def is_admin?
+      unless current_user.admin?
+        flash[:alert] = "You don't have permissions"
+        redirect_to articles_path
+      end
     end
 end
