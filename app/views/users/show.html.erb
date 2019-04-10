@@ -1,2 +1,53 @@
-<h1>My profile Daniel</h1>
+<!-- Dashboard breadcrumb section -->
+<div class="section dashboard-breadcrumb-section bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>My Profile</h2>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li class="active">My Profile</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD PROFILE SECTION -->
+<section class="clearfix bg-dark profileSection">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-sm-5 col-xs-12">
+				<div class="dashboardBoxBg mb30">
+					<div class="profileImage">
+						<img src="<%= image_path('/assets/dashboard/recent-user-5.jpg') %>" alt="Image User" class="img-circle">
+						<div class="file-upload profileImageUpload">
+							<div class="upload-area">
+								<input type="file" name="img[]" class="file">
+								<button class="browse" type="button">Upload a Picture <i class="icon-listy icon-upload"></i></button>
+							</div>
+						</div>
+					</div>
+					<div class="profileUserInfo bt profileName">
+						<p>Your Current Plan</p>
+						<h2>Platinum Package</h2>
+						<h5>Next Payment: <span>15/01/2017</span></h5>
+						<a href="#" class="btn btn-primary">Change</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-7 col-xs-12">
+				<form>
+					<div class="dashboardBoxBg">
+						<div class="profileIntro">
+							<h2>Your Profile</h2>
+							<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form Ipsum available.</p>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
 
