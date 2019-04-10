@@ -4,6 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+  enum role: [ :user, :shipper, :trucker, :admin ]
+
+  before_create :set_default_user
+
+  def set_default_user
+  	self.role = :user
+  end
+
   def avatar_url
   	hash = Digest::MD5.hexdigest(email)
   	"http://www.gravatar.com/avatar/#{hash}?s=25&d=identicon"
