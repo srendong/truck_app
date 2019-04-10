@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 	before_action :validate_user
+	before_action :find_user, only: [:show]
 
   def show
-  	@user = User.find(params[:id])
+  	avatar_url = current_user.avatar_url
+  	@large_avatar = "#{avatar_url}&s=170"
   end
 
 
@@ -13,5 +15,9 @@ class UsersController < ApplicationController
   			redirect_to root_path
   			flash[:alert] = "You don't have permissions."
   		end
+  	end
+
+  	def find_user
+  		@user = User.find(params[:id])
   	end
 end
