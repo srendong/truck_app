@@ -1,0 +1,15 @@
+<div class="sidebarInner">
+  <div class="panel panel-default">
+    <div class="panel-heading">Categories</div>
+    <div class="panel-body">
+      <ul class="list-unstyle categoryList">
+        <% Category.all.each do |category| %>
+        <li>
+          <%= link_to articles_path(category: category.name) do %> 
+          <%= category.name %> <span class="pull-right">(<%=category.articles.count%>)</span>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>

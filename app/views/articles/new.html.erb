@@ -1,5 +1,28 @@
-<h1>New Article</h1>
+<%= render "layouts/alerts" %>
 
-<%= render 'form', article: @article %>
+<!-- Dashboard breadcrumb section -->
+<div class="section dashboard-breadcrumb-section bg-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Submit Listings</h2>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li class="active">Submit Listings</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Back', articles_path %>
+<!-- DASHBOARD ORDERS SECTION -->
+<section class="clearfix bg-dark listingSection" id="listing-add-edit">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+        <%= render 'form', article: @article %>
+			</div>
+		</div>
+	</div>
+</section>

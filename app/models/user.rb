@@ -18,4 +18,8 @@ class User < ApplicationRecord
   	hash = Digest::MD5.hexdigest(email)
   	"http://www.gravatar.com/avatar/#{hash}?s=25&d=identicon"
   end
+
+  def username
+    self.email.split('@')[0]
+  end
 end

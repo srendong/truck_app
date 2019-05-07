@@ -1,6 +1,26 @@
-<h1>Editing Article</h1>
+<!-- Dashboard breadcrumb section -->
+  <div class="section dashboard-breadcrumb-section bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Edit Post</h2>
+          <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li class="active">Edit Post</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= render 'form', article: @article %>
-
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
+  <!-- DASHBOARD ORDERS SECTION -->
+  <section class="clearfix bg-dark listingSection" id="listing-add-edit">
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-xs-12">
+          <%= render 'form', article: @article %>
+  			</div>
+  		</div>
+  	</div>
+  </section>

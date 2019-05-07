@@ -1,4 +1,5 @@
-<%= form_with(model: article, local: true) do |form| %>
+<%= form_with(model: article, local: true, class: "listing__form") do |form| %>
+
   <% if article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -11,17 +12,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <div class="dashboardBoxBg mb30">
+    <div class="profileIntro paraMargin">
+      <h3>New Article</h3>
+      <p>Here you can write your post.</p>
+      <div class="row">
+        <div class="form-group col-sm-6 col-xs-12">
+          <label for="listingTitle">Listing Title</label>
+          <%= form.text_field :title, class: "form-control", id: "listingTitle", placeholder: "Listing Title" %>
+        </div>
+        <div class="form-group col-sm-6 col-xs-12">
+          <label for="listingCategory">Category</label>
+          <div class="contactSelect">
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+              <%= form.collection_select(:category_id, Category.all, :id, :name, {prompt: "choose a category"}, {class: "select-drop"}) %>
+              
+          </div>
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="discribeTheListing">Discribe the listing</label>
+          <%= form.text_area :content, class: "form-control", placeholder: "Discribe the listing" %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-footer text-center">
+    <%= form.button "Submit", value:"Submit Post", class:"btn-submit", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Sending..." }%>
   </div>
 <% end %>
