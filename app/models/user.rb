@@ -28,4 +28,8 @@ class User < ApplicationRecord
     UserNotifierMailer.welcome_user(self).deliver_now
   end
 
+  def new_article_created
+   UserNotifierMailer.new_article_created(self).deliver_now
+  end
+
 end
