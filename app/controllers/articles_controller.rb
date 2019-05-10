@@ -47,7 +47,8 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
         @user.each do |user|
-          UserNotifierMailer.new_article_created(user.email, @article.title, @article.id).deliver_now
+          email = user.email
+          UserNotifierMailer.new_article_created(email, @article.title, @article.id).deliver_now
         end
 
       else

@@ -15,4 +15,6 @@ class UserNotifierMailer < ApplicationMailer
     mail(to: @email, subject: "#{@title} new article created on truckapp")
   end
 
+  
+
 end

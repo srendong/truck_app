@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_020717) do
+ActiveRecord::Schema.define(version: 2019_05_09_235301) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -27,6 +27,56 @@ ActiveRecord::Schema.define(version: 2019_05_04_020717) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "coverages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "truck_loads", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "truck_merchandises", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "truck_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trucks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "TruckType_id"
+    t.integer "TruckMerchandise_id"
+    t.integer "coverage_id"
+    t.integer "city_id"
+    t.boolean "gps"
+    t.boolean "aviable_now"
+    t.text "image"
+    t.float "latitude"
+    t.float "price_per_km"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["TruckMerchandise_id"], name: "index_trucks_on_TruckMerchandise_id"
+    t.index ["TruckType_id"], name: "index_trucks_on_TruckType_id"
+    t.index ["city_id"], name: "index_trucks_on_city_id"
+    t.index ["coverage_id"], name: "index_trucks_on_coverage_id"
+    t.index ["user_id"], name: "index_trucks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
