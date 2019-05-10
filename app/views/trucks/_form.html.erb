@@ -1,0 +1,54 @@
+<%= form_with(model: truck, local: true, class: "listing__form") do |form| %>
+
+  <% if truck.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(truck.errors.count, "error") %> prohibited this truck from being saved:</h2>
+
+      <ul>
+      <% truck.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="dashboardBoxBg mb30">
+    <div class="profileIntro paraMargin">
+      <h3>New Truck</h3>
+      <p>Here you can write your post.</p>
+      <div class="row">
+        <div class="form-group col-sm-6 col-xs-12">
+          <label for="listingTitle">Listing Title</label>
+          <%= form.text_field :title, class: "form-control", id: "listingTitle", placeholder: "Listing Title" %>
+        </div>
+        <div class="form-group col-sm-6 col-xs-12">
+          <label for="listingCategory">Category</label>
+          <div class="contactSelect">
+
+
+              <%= form.collection_select(:city_id, City.all, :id, :name, {prompt: "choose a city"}, {class: "select-drop"}) %> <br>
+              <%= form.collection_select(:truck_load_id, TruckLoad.all, :id, :name, {prompt: "choose a load"}, {class: "select-drop"}) %> <br>
+              <%= form.collection_select(:coverage, Coverage.all, :id, :name, {prompt: "choose a coverage"}, {class: "select-drop"}) %> <br>
+              <%= form.collection_select(:truck_merchandise, TruckMerchandise.all, :id, :name, {prompt: "choose a merchandise"}, {class: "select-drop"}) %> <br>
+              <%= form.collection_select(:truck_type, TruckType.all, :id, :name, {prompt: "choose a type"}, {class: "select-drop"}) %><br>
+              <%= form.check_box :gps %>have your tuck GPS?
+              <%= form.check_box :aviable_now %>aviable now?
+              
+
+
+
+
+
+          </div>
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="discribeTheListing">Discribe the listing</label>
+          <%= form.text_area :content, class: "form-control", placeholder: "Discribe the listing" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-footer text-center">
+    <%= form.button "Submit", value:"Submit Post", class:"btn-submit", data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Sending..." }%>
+  </div>
+<% end %>

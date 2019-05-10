@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
       @articles = Article.all.order(created_at: :desc)
     else
       @category_id = Category.find_by(name: params[:category]).id
-      @rticles = Article.where(categor_id: @category_id).order(created_at: :desc)
+      @articles = Article.where(category_id: @category_id).order(created_at: :desc)
     end
 
   end
